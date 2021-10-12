@@ -1,0 +1,19 @@
+// PAGES
+@import 'pages/_home.scss';
+
+// COMPONENTS
+@import 'components/_header.scss';
+@import 'components/_nav.scss';
+
+// COMMON
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: skyblue;
+	overflow: hidden;
+}
+
+.page {
+	padding: 0 2rem;
+	width: 100%;
+	height: 100%;
+}

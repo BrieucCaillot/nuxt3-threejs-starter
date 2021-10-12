@@ -1,24 +1,29 @@
-# Vuejs + ThreeJS boilerplate
+# Nuxt 3 Minimal Starter
 
-## Project setup
-```
+We recommend to look at the [documentation](https://v3.nuxtjs.org).
+
+## Setup
+
+Make sure to install the dependencies
+
+```bash
 yarn install
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+## Development
+
+Start the development server on http://localhost:3000
+
+```bash
+yarn dev
 ```
 
-### Compiles and minifies for production
-```
+## Production
+
+Build the application for production:
+
+```bash
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
