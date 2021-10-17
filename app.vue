@@ -1,10 +1,12 @@
 <template>
-	<div>
-		<NuxtPage />
-	</div>
+	<NuxtPage />
 </template>
 
-<script>
+<script lang="ts">
 import '@/assets/css/tailwind.css'
 import '@/assets/sass/styles.scss'
+
+export default defineComponent({
+	setup() {},
+})
 </script>

@@ -1,13 +1,12 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": false,
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "types": [
-      "node"
-    ]
-  }
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"strict": false,
+		"allowJs": true,
+		"resolveJsonModule": true,
+		"types": ["node"]
+	},
+	"include": ["types/**/*"]
 }
