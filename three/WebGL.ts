@@ -1,24 +1,24 @@
 import * as THREE from 'three'
 
-class WebGL {
+export default class WebGL {
 	scene: THREE.Scene
 	camera: THREE.PerspectiveCamera
 	renderer: THREE.WebGLRenderer
-	width: number
-	height: number
+	width = 0
+	height = 0
+	clock = new THREE.Clock()
+	rafUpdate: Function | null = null
 
-	constructor() {
+	constructor(rafUpdate: Function) {
 		this.scene = new THREE.Scene()
 		this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-		this.renderer = new THREE.WebGLRenderer()
-		this.width = window.innerWidth
-		this.height = window.innerWidth
-
-		this.renderer.setSize(window.innerWidth, window.innerHeight)
 		this.camera.position.z = 5
-		this.animate()
-
+		this.renderer = new THREE.WebGLRenderer()
+		this.clock = new THREE.Clock()
+		this.onResize()
+		this.onUpdate()
 		this.setEvents()
+		this.rafUpdate = rafUpdate
 	}
 
 	setEvents = () => {
@@ -28,18 +28,18 @@ class WebGL {
 	onResize = () => {
 		this.width = window.innerWidth
 		this.height = window.innerHeight
-
 		this.camera.aspect = this.width / this.height
 		this.camera.updateProjectionMatrix()
-
 		this.renderer.setSize(this.width, this.height)
 		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1, 2))
 	}
 
-	animate = () => {
-		requestAnimationFrame(this.animate)
+	onUpdate = () => {
+		requestAnimationFrame(this.onUpdate)
 		this.renderer.render(this.scene, this.camera)
+		const deltaTime = this.clock.getDelta()
+		if (this.rafUpdate) this.rafUpdate()
 	}
 }
 
-export default WebGL
+// export default WebGL

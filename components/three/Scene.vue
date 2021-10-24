@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 
-import useWebGL from '@/hooks/useWebGL'
+import useWebGL from '@/composables/useWebGL'
 import Cube from '@/components/three/Cube.vue'
 
 export default defineComponent({
@@ -15,13 +15,13 @@ export default defineComponent({
 		Cube,
 	},
 	setup() {
-		const root = ref(null)
+		const root: { value: HTMLElement | null } = ref(null)
 		const { renderer } = useWebGL()
-
 		onMounted(() => {
-			root.value.appendChild(renderer.domElement)
+			if (root.value) {
+				root.value.appendChild(renderer.domElement)
+			}
 		})
-
 		return {
 			root,
 		}

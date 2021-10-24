@@ -9,4 +9,10 @@ export default defineNuxtConfig({
 			},
 		],
 	},
+	build: {
+		postcss: {
+			postcssOptions: require('./postcss.config'),
+		},
+		transpile: ['three', 'gsap'],
+	},
 })

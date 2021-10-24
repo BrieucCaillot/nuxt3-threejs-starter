@@ -10,13 +10,12 @@
 		"@types/three": "^0.133.1",
 		"autoprefixer": "^10.3.7",
 		"nuxt3": "latest",
-		"postcss": "^8.3.9",
-		"sass": "^1.43.2",
+		"postcss": "^8.3.11",
+		"sass": "^1.43.3",
 		"tailwindcss": "^2.2.17"
 	},
 	"dependencies": {
 		"gsap": "^3.8.0",
-		"three": "^0.133.1",
-		"vuex": "^3.6.2"
+		"three": "^0.133.1"
 	}
 }

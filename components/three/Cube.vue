@@ -5,29 +5,26 @@ import { defineComponent, onMounted } from 'vue'
 import * as THREE from 'three'
 import gsap from 'gsap'
 
-import useWebGL from '@/hooks/useWebGL'
+import useWebGL from '@/composables/useWebGL'
+import useRAF from '@/composables/useRAF'
 
 export default defineComponent({
 	setup() {
-		console.log('cube')
+		console.log('SETUP CUBE')
 
-		onMounted(() => {
-			const { scene } = useWebGL()
+		const { scene } = useWebGL()
 
-			const geometry = new THREE.BoxGeometry(1)
-			const material = new THREE.MeshNormalMaterial()
-			const cube = new THREE.Mesh(geometry, material)
-			scene.add(cube)
+		const geometry = new THREE.BoxGeometry(1)
+		const material = new THREE.MeshNormalMaterial()
+		const cube = new THREE.Mesh(geometry, material)
+		scene.add(cube)
 
-			gsap.to(cube.rotation, {
-				duration: 6,
-				y: 10,
-				yoyo: true,
-				repeat: -1,
-			})
+		const onUpdate = () => {
+			cube.rotation.y += 0.01
+		}
 
-			scene.add(cube)
-		})
+		const raf = useRAF()
+		raf.subscribe('Cube', onUpdate)
 	},
 })
 </script>

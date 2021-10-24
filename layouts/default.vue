@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Header />
-		<Scene />
+		<Scene v-if="isReady" />
 		<main class="page">
 			<slot />
 		</main>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 import Header from '@/components/Header.vue'
 import Scene from '@/components/three/Scene.vue'
@@ -20,6 +20,16 @@ export default defineComponent({
 		Header,
 		Scene,
 	},
-	setup() {},
+	setup() {
+		console.log('SETUP DEFAULT LAYOUT')
+
+		const isReady = ref(false)
+		if (process.client) {
+			isReady.value = true
+		}
+		return {
+			isReady,
+		}
+	},
 })
 </script>
