@@ -17,6 +17,8 @@ export default defineComponent({
 		const geometry = new THREE.BoxGeometry(1)
 		const material = new THREE.MeshNormalMaterial()
 		const cube = new THREE.Mesh(geometry, material)
+		cube.name = 'Cube'
+		cube.rotation.y = 10
 		scene.add(cube)
 
 		const onUpdate = () => {

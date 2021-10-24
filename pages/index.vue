@@ -6,17 +6,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
 	setup() {
 		// const locale = useState('locale')
 		// console.log(locale)
 		console.log('SETUP HOME')
-
-		onMounted(() => {
-			console.log('onMounted')
-		})
 	},
 })
 </script>

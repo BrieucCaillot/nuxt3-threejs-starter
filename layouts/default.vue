@@ -2,7 +2,7 @@
 	<div>
 		<Header />
 		<Scene v-if="isReady" />
-		<main class="page">
+		<main id="main" class="page">
 			<slot />
 		</main>
 	</div>
