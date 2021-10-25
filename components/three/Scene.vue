@@ -1,5 +1,5 @@
 <template>
-	<div ref="root">
+	<div id="canvas" ref="canvas">
 		<Cube />
 	</div>
 </template>
@@ -15,15 +15,16 @@ export default defineComponent({
 		Cube,
 	},
 	setup() {
-		const root: { value: HTMLElement | null } = ref(null)
-		const { renderer } = useWebGL()
+		const canvas: { value: HTMLElement | null } = ref(null)
+
 		onMounted(() => {
-			if (root.value) {
-				root.value.appendChild(renderer.domElement)
-			}
+			console.log('SCENE MOUNTED')
+
+			const { renderer } = useWebGL()
+			if (canvas.value) canvas.value.appendChild(renderer.domElement)
 		})
 		return {
-			root,
+			canvas,
 		}
 	},
 })

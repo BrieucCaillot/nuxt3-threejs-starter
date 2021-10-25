@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="layout">
 		<Header />
-		<Scene v-if="isReady" />
+		<Scene />
 		<main id="main" class="page">
 			<slot />
 		</main>
@@ -23,13 +23,15 @@ export default defineComponent({
 	setup() {
 		console.log('SETUP DEFAULT LAYOUT')
 
-		const isReady = ref(false)
-		if (process.client) {
-			isReady.value = true
-		}
-		return {
-			isReady,
-		}
+		// const isReady = ref(false)
+		// if (process.client) {
+		// 	isReady.value = true
+		// }
+		// return {
+		// 	isReady,
+		// }
 	},
 })
 </script>
+
+<style lang="scss" scoped></style>

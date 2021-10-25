@@ -5,9 +5,6 @@ let webGL: WebGL | null = null
 
 const useWebGL = () => {
 	const raf = useRAF()
-	// const test = () => {
-	// 	console.log('test')
-	// }
 	return webGL || (webGL = new WebGL(raf.onUpdate))
 }
 

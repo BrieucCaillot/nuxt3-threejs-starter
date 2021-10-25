@@ -10,23 +10,23 @@ import useRAF from '@/composables/useRAF'
 
 export default defineComponent({
 	setup() {
-		console.log('SETUP CUBE')
+		onMounted(() => {
+			const { scene } = useWebGL()
 
-		const { scene } = useWebGL()
+			const geometry = new THREE.BoxGeometry(1)
+			const material = new THREE.MeshNormalMaterial()
+			const cube = new THREE.Mesh(geometry, material)
+			cube.name = 'Cube'
+			cube.rotation.y = 10
+			scene.add(cube)
 
-		const geometry = new THREE.BoxGeometry(1)
-		const material = new THREE.MeshNormalMaterial()
-		const cube = new THREE.Mesh(geometry, material)
-		cube.name = 'Cube'
-		cube.rotation.y = 10
-		scene.add(cube)
+			const onUpdate = () => {
+				cube.rotation.y += 0.01
+			}
 
-		const onUpdate = () => {
-			cube.rotation.y += 0.01
-		}
-
-		const raf = useRAF()
-		raf.subscribe('Cube', onUpdate)
+			const raf = useRAF()
+			raf.subscribe('Cube', onUpdate)
+		})
 	},
 })
 </script>
