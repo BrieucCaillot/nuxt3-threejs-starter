@@ -11,8 +11,6 @@ import { defineComponent } from 'vue'
 export default defineComponent({
 	setup() {
 		console.log('SETUP HOME')
-		// const locale = useState('locale')
-		// console.log(locale)
 	},
 })
 </script>

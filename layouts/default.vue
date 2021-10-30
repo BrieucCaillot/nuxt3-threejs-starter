@@ -22,14 +22,6 @@ export default defineComponent({
 	},
 	setup() {
 		console.log('SETUP DEFAULT LAYOUT')
-
-		// const isReady = ref(false)
-		// if (process.client) {
-		// 	isReady.value = true
-		// }
-		// return {
-		// 	isReady,
-		// }
 	},
 })
 </script>
