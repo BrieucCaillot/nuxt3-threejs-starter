@@ -1,32 +1,37 @@
 <template></template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import * as THREE from 'three'
 
 import useWebGL from '@/composables/useWebGL'
 import useRAF from '@/composables/useRAF'
-import vertexShader from '@/three/shaders/cube/vertex'
-import fragmentShader from '@/three/shaders/cube/fragment'
+import vertexShader from '@/three/shaders/plane/vertex'
+import fragmentShader from '@/three/shaders/plane/fragment'
 
 export default defineComponent({
 	setup() {
-		const geometry = new THREE.BoxGeometry(1)
+		const geometry = new THREE.PlaneGeometry(0.5, 0.5, 10, 10)
 		const material = new THREE.RawShaderMaterial({
+			uniforms: {
+				uTime: {
+					value: 0,
+				},
+			},
 			vertexShader: vertexShader,
 			fragmentShader: fragmentShader,
+			side: THREE.DoubleSide,
 		})
-		const cube = new THREE.Mesh(geometry, material)
+		const plane = new THREE.Mesh(geometry, material)
 
 		onMounted(() => {
 			const { scene } = useWebGL()
 
-			cube.name = 'Cube'
-			cube.rotation.y = 10
-			scene.add(cube)
+			plane.name = 'Plane'
+			scene.add(plane)
 
 			const onUpdate = () => {
-				cube.rotation.y += 0.01
+				material.uniforms.uTime.value += 0.05
 			}
 
 			const raf = useRAF()
@@ -34,7 +39,7 @@ export default defineComponent({
 		})
 		onUnmounted(() => {
 			const { scene } = useWebGL()
-			scene.remove(cube)
+			scene.remove(plane)
 		})
 	},
 })

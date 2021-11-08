@@ -1,7 +1,7 @@
 <template>
-	<header>
-		<nav>
-			<ul class="text-white">
+	<header class="fixed top-0 p-8 w-full z-20">
+		<nav class="max-w-[250px] ml-auto">
+			<ul class="text-white flex justify-between list-none">
 				<li>
 					<NuxtLink to="/">Home Page</NuxtLink>
 				</li>
@@ -20,22 +20,3 @@ export default defineComponent({
 	setup() {},
 })
 </script>
-
-<style lang="scss" scoped>
-header {
-	position: fixed;
-	top: 0;
-	padding: 2rem;
-	width: 100%;
-}
-
-nav {
-	max-width: 250px;
-	margin-left: auto;
-	ul {
-		display: flex;
-		justify-content: space-between;
-		list-style: none;
-	}
-}
-</style>
