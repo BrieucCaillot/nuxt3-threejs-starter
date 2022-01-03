@@ -1,5 +1,11 @@
 <template>
-	<NuxtPage />
+	<div>
+		<Head lang="en> 50 ? 'en-GB' : 'en-US'">
+			<Title>Nuxt3 ThreeJS Starter</Title>
+			<Meta name="description" content="Nuxt3 ThreeJS Starter" />
+		</Head>
+		<NuxtPage />
+	</div>
 </template>
 
 <script lang="ts">
