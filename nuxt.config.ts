@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt3'
+import glsl from 'vite-plugin-glsl'
 
 export default defineNuxtConfig({
 	meta: {
@@ -14,5 +15,8 @@ export default defineNuxtConfig({
 			postcssOptions: require('./postcss.config'),
 		},
 		transpile: ['three', 'gsap'],
+	},
+	vite: {
+		plugins: [glsl()],
 	},
 })
