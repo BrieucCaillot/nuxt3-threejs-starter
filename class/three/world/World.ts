@@ -1,6 +1,6 @@
 import WebGL from '@/class/three/WebGL'
 import Resources from '@/class/three/utils/Resources'
-import Floor from '@/class/three/world/Floor'
+import Floor from '~~/class/three/World/Cube'
 
 class World {
 	webGL: WebGL

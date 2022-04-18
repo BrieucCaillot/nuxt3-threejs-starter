@@ -9,6 +9,7 @@
 		"@types/gsap": "^3.0.0",
 		"@types/three": "^0.139.0",
 		"autoprefixer": "^10.4.4",
+		"lil-gui": "^0.16.1",
 		"nuxt3": "latest",
 		"postcss": "^8.4.12",
 		"sass": "^1.50.0",

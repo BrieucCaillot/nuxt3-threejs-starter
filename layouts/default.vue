@@ -2,7 +2,7 @@
 	<div class="layout">
 		<Header />
 		<main id="main" class="page">
-			<Scene />
+			<Canvas />
 			<slot />
 		</main>
 	</div>
@@ -12,13 +12,13 @@
 import { defineComponent, ref } from 'vue'
 
 import Header from '@/components/Header.vue'
-import Scene from '@/components/three/Scene.vue'
+import Canvas from '@/components/three/Canvas.vue'
 
 export default defineComponent({
 	name: 'LayoutDefault',
 	components: {
 		Header,
-		Scene,
+		Canvas,
 	},
 	setup() {
 		console.log('SETUP DEFAULT LAYOUT')

@@ -5,7 +5,8 @@ import Camera from '@/class/three/Camera'
 import Sizes from '@/class/three/utils/Sizes'
 import Resources from '@/class/three/utils/Resources'
 import Renderer from '@/class/three/Renderer'
-import World from '@/class/three/world/World'
+import World from '~~/class/three/World/World'
+import Debug from '@/class/three/Debug'
 
 class WebGL {
 	static _instance: WebGL
@@ -17,6 +18,7 @@ class WebGL {
 	camera: Camera
 	renderer: Renderer
 	world: World
+	debug: Debug
 
 	constructor(_canvas?: HTMLCanvasElement) {
 		if (WebGL._instance) {
@@ -32,6 +34,7 @@ class WebGL {
 		this.camera = new Camera()
 		this.renderer = new Renderer()
 		// this.world = new World()
+		this.debug = new Debug()
 
 		// Bind all methods
 		this.bindAll()
