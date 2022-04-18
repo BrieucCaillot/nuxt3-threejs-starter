@@ -1,11 +1,9 @@
-import { useState } from '#app'
-import WebGL from '@/three/WebGL'
+import WebGL from '@/class/three/WebGL'
 
 let webGL: WebGL | null = null
 
-const useWebGL = () => {
-	const raf = useRAF()
-	return webGL || (webGL = new WebGL(raf.onUpdate))
+const useWebGL = (_canvas?: HTMLCanvasElement) => {
+	return new WebGL(_canvas!)
 }
 
 export default useWebGL

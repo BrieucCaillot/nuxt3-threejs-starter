@@ -4,36 +4,33 @@
 import { defineComponent, onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
 
-import useWebGL from '@/composables/useWebGL'
-import useRAF from '@/composables/useRAF'
-import vertexShader from '@/three/shaders/cube/vertex'
-import fragmentShader from '@/three/shaders/cube/fragment'
+import vertexShader from '@/class/three/shaders/cube/vertex'
+import fragmentShader from '@/class/three/shaders/cube/fragment'
+import WebGL from '@/class/three/WebGL'
 
 export default defineComponent({
 	setup() {
-		const geometry = new THREE.BoxGeometry(1)
-		const material = new THREE.RawShaderMaterial({
-			vertexShader: vertexShader,
-			fragmentShader: fragmentShader,
+		const geometry = new THREE.BoxGeometry(1, 1, 1)
+		const material = new THREE.MeshBasicMaterial({
+			color: '#fff',
+			// vertexShader: vertexShader,
+			// fragmentShader: fragmentShader,
 		})
 		const cube = new THREE.Mesh(geometry, material)
 
 		onMounted(() => {
-			const { scene } = useWebGL()
+			const { scene } = new WebGL()
 
 			cube.name = 'Cube'
-			cube.rotation.y = 10
+			// cube.rotation.y = 10
 			scene.add(cube)
 
 			const onUpdate = () => {
 				cube.rotation.y += 0.01
 			}
-
-			const raf = useRAF()
-			raf.subscribe('Cube', onUpdate)
 		})
 		onUnmounted(() => {
-			const { scene } = useWebGL()
+			const { scene } = new WebGL()
 			scene.remove(cube)
 		})
 	},

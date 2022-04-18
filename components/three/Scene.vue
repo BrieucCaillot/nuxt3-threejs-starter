@@ -1,5 +1,5 @@
 <template>
-	<div id="canvas" ref="canvas" class="fixed top-0 left-0 h-full w-full z-0"></div>
+	<canvas id="canvas" ref="canvas" class="fixed top-0 left-0 h-full w-full z-0"></canvas>
 </template>
 
 <script lang="ts">
@@ -8,13 +8,12 @@ import useWebGL from '@/composables/useWebGL'
 
 export default defineComponent({
 	setup() {
-		const canvas: { value: HTMLElement | null } = ref(null)
+		const canvas: { value: HTMLCanvasElement | null } = ref(null)
 
 		onMounted(() => {
 			console.log('SCENE MOUNTED')
 
-			const { renderer } = useWebGL()
-			if (canvas.value) canvas.value.appendChild(renderer.domElement)
+			if (canvas.value) useWebGL(canvas.value as HTMLCanvasElement)
 		})
 		return {
 			canvas,

@@ -1,8 +1,8 @@
 <template>
 	<div class="layout">
 		<Header />
-		<Scene />
 		<main id="main" class="page">
+			<Scene />
 			<slot />
 		</main>
 	</div>

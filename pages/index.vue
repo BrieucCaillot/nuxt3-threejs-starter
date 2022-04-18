@@ -10,10 +10,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import useWebGL from '@/composables/useWebGL'
 import Cube from '@/components/three/Cube.vue'
+import WebGL from '@/class/three/WebGL'
 
 export default defineComponent({
+	name: 'Home',
 	components: {
 		Cube,
 	},
@@ -21,8 +22,9 @@ export default defineComponent({
 		console.log('SETUP HOME')
 
 		onMounted(() => {
-			const { camera } = useWebGL()
-			camera.position.z = 5
+			const { scene, camera } = new WebGL()
+			console.log(scene.children)
+			// camera.instance?.position.z = 5
 		})
 	},
 })
