@@ -1,12 +1,11 @@
 import * as THREE from 'three'
-import GUI from 'lil-gui'
 
 import WebGL from '@/class/three/WebGL'
+import Debug from '@/class/three/Debug'
 import vertexShader from '@/class/three/shaders/cube/vertex.glsl'
 import fragmentShader from '@/class/three/shaders/cube/fragment.glsl'
-import Debug from '@/class/three/Debug'
 
-class Floor {
+class Cube {
 	webGL: WebGL
 
 	scene: THREE.Scene
@@ -64,6 +63,10 @@ class Floor {
 		this.scene.add(this.mesh)
 	}
 
+	update() {
+		this.mesh.rotation.z += 0.01
+	}
+
 	destroy() {
 		this.scene.remove(this.mesh)
 		this.geometry.dispose()
@@ -71,4 +74,4 @@ class Floor {
 	}
 }
 
-export default Floor
+export default Cube

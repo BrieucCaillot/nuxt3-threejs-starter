@@ -9,23 +9,23 @@ import World from '~~/class/three/World/World'
 import Debug from '@/class/three/Debug'
 
 class WebGL {
-	static _instance: WebGL
+	static instance: WebGL
 
-	canvas: HTMLCanvasElement
-	sizes: Sizes
-	scene: THREE.Scene
-	resources: Resources
-	camera: Camera
-	renderer: Renderer
-	world: World
-	debug: Debug
+	canvas!: HTMLCanvasElement
+	sizes!: Sizes
+	scene!: THREE.Scene
+	resources!: Resources
+	camera!: Camera
+	renderer!: Renderer
+	world!: World
+	debug!: Debug
 
 	constructor(_canvas?: HTMLCanvasElement) {
-		if (WebGL._instance) {
-			return WebGL._instance
+		if (WebGL.instance) {
+			return WebGL.instance
 		} else if (!_canvas) return
 
-		WebGL._instance = this
+		WebGL.instance = this
 
 		this.canvas = _canvas
 		this.sizes = new Sizes()
@@ -33,8 +33,8 @@ class WebGL {
 		this.resources = new Resources()
 		this.camera = new Camera()
 		this.renderer = new Renderer()
-		// this.world = new World()
 		this.debug = new Debug()
+		this.world = new World()
 
 		// Bind all methods
 		this.bindAll()
@@ -59,7 +59,7 @@ class WebGL {
 	update(time: number) {
 		// console.log(time)
 		this.camera.onUpdate()
-		// this.world.update()
+		this.world.onUpdate()
 		this.renderer.onUpdate()
 	}
 
@@ -90,6 +90,7 @@ class WebGL {
 		this.camera.destroy()
 		this.renderer.destroy()
 
+		// Remove update
 		gsap.ticker.remove(this.update)
 	}
 

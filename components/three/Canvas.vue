@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
+
 import useWebGL from '@/composables/useWebGL'
 
 export default defineComponent({
