@@ -14,7 +14,7 @@ class Cube {
 	mesh!: THREE.Mesh
 	debug: Debug
 
-	debugFolder: {} | undefined
+	debugFolder: { [key: string]: any } | undefined
 	colors = ['#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff']
 	params = {
 		color: this.colors[0],
@@ -31,7 +31,7 @@ class Cube {
 
 		// Debug
 		if (this.debug.active) {
-			this.debugFolder = this.debug.gui.addFolder('environment')
+			this.debugFolder = this.debug.gui.addFolder('cube')
 		}
 	}
 

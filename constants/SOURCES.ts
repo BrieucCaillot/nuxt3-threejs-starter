@@ -5,16 +5,15 @@ enum SourceType {
 }
 
 interface Source {
-	name?: string
-	type?: 'texture' | 'cubeTexture' | 'gltfModel' | string
-	path?: string | string[]
+	name: string
+	type: SourceType
+	path: string | string[]
 }
 
 const sources = [
 	{
 		name: 'environmentMapTexture',
-		// type: SourceType.cubeTexture,
-		type: 'cubeTexture',
+		type: SourceType.cubeTexture,
 		path: [
 			'textures/environmentMap/px.jpg',
 			'textures/environmentMap/nx.jpg',
@@ -26,20 +25,17 @@ const sources = [
 	},
 	{
 		name: 'grassColorTexture',
-		// type: SourceType.texture,
-		type: 'texture',
+		type: SourceType.texture,
 		path: 'textures/dirt/color.jpg',
 	},
 	{
 		name: 'grassNormalTexture',
-		// type: SourceType.texture,
-		type: 'texture',
+		type: SourceType.texture,
 		path: 'textures/dirt/normal.jpg',
 	},
 	{
 		name: 'foxModel',
-		// type: SourceType.gltfModel,
-		type: 'gltfModel',
+		type: SourceType.gltfModel,
 		path: 'models/Fox/glTF/Fox.gltf',
 	},
 ]

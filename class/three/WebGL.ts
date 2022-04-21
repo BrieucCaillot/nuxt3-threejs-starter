@@ -56,10 +56,9 @@ class WebGL {
 		this.renderer.onResize()
 	}
 
-	update(time: number) {
-		// console.log(time)
+	update(time: number, delta: number, timeDelta: number) {
 		this.camera.onUpdate()
-		this.world.onUpdate()
+		this.world.onUpdate(time, delta, timeDelta)
 		this.renderer.onUpdate()
 	}
 
