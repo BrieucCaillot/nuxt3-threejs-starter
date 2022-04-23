@@ -9,7 +9,6 @@ export default class Fox {
 
 	scene: THREE.Scene
 	resources: Resources
-	time: number
 	debug: Debug
 
 	debugFolder: { [key: string]: any } | undefined
@@ -21,8 +20,6 @@ export default class Fox {
 		this.webGL = new WebGL()
 		this.scene = this.webGL.scene
 		this.resources = this.webGL.resources
-		// this.time = this.webGL.time
-		this.time = 0
 		this.debug = this.webGL.debug
 
 		// Debug
@@ -96,7 +93,7 @@ export default class Fox {
 		}
 	}
 
-	update(time: number, delta: number, timeDelta: number) {
-		this.animation.mixer.update(delta * 0.001)
+	update(deltaTime: number) {
+		this.animation.mixer.update(deltaTime * 0.001)
 	}
 }

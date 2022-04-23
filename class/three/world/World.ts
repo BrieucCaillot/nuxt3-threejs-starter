@@ -3,12 +3,14 @@ import Resources from '@/class/three/utils/Resources'
 import Floor from '@/class/three/World/Floor'
 import Fox from '@/class/three/World/Fox'
 import Environment from '@/class/three/World/Environment'
+import Time from '@/class/three/Time'
 
 class World {
 	webGL: WebGL
 
 	scene: THREE.Scene
 	resources: Resources
+	time: Time
 	floor: Floor | null = null
 	fox: Fox | null = null
 	environment: Environment | null = null
@@ -17,6 +19,7 @@ class World {
 		this.webGL = new WebGL()
 		this.scene = this.webGL.scene
 		this.resources = this.webGL.resources
+		this.time = this.webGL.time
 
 		// Wait for resources
 		this.resources.addEventListener('resourcesLoaded', () => this.onResourcesLoaded())
@@ -29,8 +32,9 @@ class World {
 		this.environment = new Environment()
 	}
 
-	onUpdate(time: number, delta: number, timeDelta: number) {
-		this.fox && this.fox.update(time, delta, timeDelta)
+	onUpdate() {
+		const { deltaTime } = this.time
+		this.fox && this.fox.update(deltaTime)
 	}
 }
 

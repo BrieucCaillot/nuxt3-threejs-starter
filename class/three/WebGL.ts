@@ -1,18 +1,19 @@
 import * as THREE from 'three'
-import gsap from 'gsap'
 
 import Camera from '@/class/three/Camera'
 import Sizes from '@/class/three/utils/Sizes'
 import Resources from '@/class/three/utils/Resources'
 import Renderer from '@/class/three/Renderer'
-import World from '~~/class/three/World/World'
+import World from '@/class/three/World/World'
 import Debug from '@/class/three/Debug'
+import Time from '@/class/three/Time'
 
 class WebGL {
 	static instance: WebGL
 
 	canvas!: HTMLCanvasElement
 	sizes!: Sizes
+	time!: Time
 	scene!: THREE.Scene
 	resources!: Resources
 	camera!: Camera
@@ -29,6 +30,7 @@ class WebGL {
 
 		this.canvas = _canvas
 		this.sizes = new Sizes()
+		this.time = new Time()
 		this.scene = new THREE.Scene()
 		this.resources = new Resources()
 		this.camera = new Camera()
@@ -43,22 +45,20 @@ class WebGL {
 		this.sizes.addEventListener('resize', () => this.resize())
 
 		// Update
-		gsap.ticker.add(this.update)
+		this.time.addUpdate(this.update)
 
 		// Dispose WebGL
 		// setTimeout(() => this.destroy(), 3000)
 	}
-
-	setListerners() {}
 
 	resize() {
 		this.camera.onResize()
 		this.renderer.onResize()
 	}
 
-	update(time: number, delta: number, timeDelta: number) {
+	update() {
 		this.camera.onUpdate()
-		this.world.onUpdate(time, delta, timeDelta)
+		this.world.onUpdate()
 		this.renderer.onUpdate()
 	}
 
@@ -90,7 +90,7 @@ class WebGL {
 		this.renderer.destroy()
 
 		// Remove update
-		gsap.ticker.remove(this.update)
+		this.time.removeUpdate(this.update)
 	}
 
 	bindAll() {
