@@ -26,7 +26,7 @@ class Camera {
 	}
 
 	setInstance() {
-		this.instance = new THREE.PerspectiveCamera(35, Number(this.sizes.width) / Number(this.sizes.height), 1, 1000)
+		this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 1, 1000)
 		this.instance.position.set(6, 4, 8)
 		this.scene.add(this.instance)
 	}
@@ -37,7 +37,7 @@ class Camera {
 	}
 
 	onResize() {
-		this.instance!.aspect = Number(this.sizes.width) / Number(this.sizes.height)
+		this.instance!.aspect = this.sizes.width / this.sizes.height
 		this.instance!.updateProjectionMatrix()
 	}
 

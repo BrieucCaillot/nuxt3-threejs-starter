@@ -1,10 +1,9 @@
 import * as THREE from 'three'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-import { SourceType, Source, sources as _sources } from '@/constants/SOURCES'
-import { EventDispatcher } from 'three'
+import { Source, sources as _sources } from '@/constants/SOURCES'
 
-class Resources extends EventDispatcher {
+class Resources extends THREE.EventDispatcher {
 	sources: Source[] = _sources
 	loaders: {
 		gltfLoader: GLTFLoader

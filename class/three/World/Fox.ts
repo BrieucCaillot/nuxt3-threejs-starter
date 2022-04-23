@@ -4,7 +4,7 @@ import Resources from '@/class/three/utils/Resources'
 import Debug from '@/class/three/Debug'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
-export default class Fox {
+class Fox {
 	webGL: WebGL
 
 	scene: THREE.Scene
@@ -97,3 +97,5 @@ export default class Fox {
 		this.animation.mixer.update(deltaTime * 0.001)
 	}
 }
+
+export default Fox

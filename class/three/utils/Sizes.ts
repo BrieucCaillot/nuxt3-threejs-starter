@@ -1,10 +1,9 @@
 import * as THREE from 'three'
-import { EventDispatcher } from 'three'
 
-class Sizes extends EventDispatcher {
-	width: Number
-	height: Number
-	pixelRatio: Number
+class Sizes extends THREE.EventDispatcher {
+	width: number
+	height: number
+	pixelRatio: number
 
 	constructor() {
 		super()

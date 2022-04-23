@@ -39,13 +39,13 @@ class Renderer {
 		this.instance.shadowMap.enabled = true
 		this.instance.shadowMap.type = THREE.PCFSoftShadowMap
 		this.instance.setClearColor(0x222222, 1)
-		this.instance.setSize(this.sizes.width as number, this.sizes.height as number)
-		this.instance.setPixelRatio(this.sizes.pixelRatio as number)
+		this.instance.setSize(this.sizes.width, this.sizes.height)
+		this.instance.setPixelRatio(this.sizes.pixelRatio)
 	}
 
 	onResize() {
-		this.instance!.setSize(this.sizes.width as number, this.sizes.height as number)
-		this.instance!.setPixelRatio(this.sizes.pixelRatio as number)
+		this.instance!.setSize(this.sizes.width, this.sizes.height)
+		this.instance!.setPixelRatio(this.sizes.pixelRatio)
 	}
 
 	onUpdate() {

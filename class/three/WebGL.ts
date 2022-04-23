@@ -2,17 +2,19 @@ import * as THREE from 'three'
 
 import Camera from '@/class/three/Camera'
 import Sizes from '@/class/three/utils/Sizes'
+import Mouse from '@/class/three/Mouse'
+import Time from '@/class/three/Time'
 import Resources from '@/class/three/utils/Resources'
 import Renderer from '@/class/three/Renderer'
 import World from '@/class/three/World/World'
 import Debug from '@/class/three/Debug'
-import Time from '@/class/three/Time'
 
 class WebGL {
 	static instance: WebGL
 
 	canvas!: HTMLCanvasElement
 	sizes!: Sizes
+	mouse!: Mouse
 	time!: Time
 	scene!: THREE.Scene
 	resources!: Resources
@@ -30,6 +32,7 @@ class WebGL {
 
 		this.canvas = _canvas
 		this.sizes = new Sizes()
+		this.mouse = new Mouse()
 		this.time = new Time()
 		this.scene = new THREE.Scene()
 		this.resources = new Resources()
@@ -43,6 +46,7 @@ class WebGL {
 
 		// Listeners
 		this.sizes.addEventListener('resize', () => this.resize())
+		this.mouse.addEventListener('mousemove', () => this.mouseMove())
 
 		// Update
 		this.time.addUpdate(this.update)
@@ -54,6 +58,10 @@ class WebGL {
 	resize() {
 		this.camera.onResize()
 		this.renderer.onResize()
+	}
+
+	mouseMove() {
+		// To do on mousemove
 	}
 
 	update() {
