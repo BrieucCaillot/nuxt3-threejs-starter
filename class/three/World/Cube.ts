@@ -1,18 +1,13 @@
 import * as THREE from 'three'
 
-import WebGL from '@/class/three/WebGL'
-import Debug from '@/class/three/Debug'
+import WebGLSub from '@/class/three/WebGLSub'
 import vertexShader from '@/class/three/shaders/cube/vertex.glsl'
 import fragmentShader from '@/class/three/shaders/cube/fragment.glsl'
 
-class Cube {
-	webGL: WebGL
-
-	scene: THREE.Scene
+class Cube extends WebGLSub {
 	geometry!: THREE.BoxGeometry
 	material!: THREE.ShaderMaterial
 	mesh!: THREE.Mesh
-	debug: Debug
 
 	debugFolder: { [key: string]: any } | undefined
 	colors = ['#ffffff', '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff']
@@ -21,9 +16,7 @@ class Cube {
 	}
 
 	constructor() {
-		this.webGL = new WebGL()
-		this.debug = this.webGL.debug
-		this.scene = this.webGL.scene
+		super()
 
 		this.setGeometry()
 		this.setMaterial()

@@ -10,6 +10,10 @@ class Debug {
 		if (!this.active) return
 		this.gui.show()
 	}
+
+	addFolder(name: string) {
+		return this.gui.addFolder(name)
+	}
 }
 
 export default Debug

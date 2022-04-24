@@ -1,23 +1,15 @@
 import * as THREE from 'three'
 
-import WebGL from '@/class/three/WebGL'
-import Resources from '@/class/three/utils/Resources'
+import WebGLSub from '@/class/three/WebGLSub'
 
-class Floor {
-	webGL: WebGL
-
-	scene: THREE.Scene
-	resources: Resources
+class Floor extends WebGLSub {
 	geometry!: THREE.CircleGeometry
 	material!: THREE.MeshStandardMaterial
 	mesh!: THREE.Mesh
 	textures: { [key: string]: THREE.Texture } = {}
 
 	constructor() {
-		this.webGL = new WebGL()
-		this.scene = this.webGL.scene
-
-		this.resources = this.webGL.resources
+		super()
 
 		this.setGeometry()
 		this.setTextures()

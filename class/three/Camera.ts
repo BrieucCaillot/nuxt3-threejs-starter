@@ -1,25 +1,14 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
-import WebGL from '@/class/three/WebGL'
-import Sizes from '@/class/three/utils/Sizes'
+import WebGLSub from '@/class/three/WebGLSub'
 
-class Camera {
-	webGL: WebGL
-
+class Camera extends WebGLSub {
 	instance: THREE.PerspectiveCamera | null = null
 	controls: OrbitControls | null = null
 
-	sizes: Sizes
-	scene: THREE.Scene
-	canvas: HTMLCanvasElement
-
 	constructor() {
-		this.webGL = new WebGL()
-
-		this.sizes = this.webGL.sizes
-		this.scene = this.webGL.scene
-		this.canvas = this.webGL.canvas
+		super()
 
 		this.setInstance()
 		this.setControls()

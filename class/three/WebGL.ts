@@ -1,10 +1,10 @@
 import * as THREE from 'three'
 
-import Camera from '@/class/three/Camera'
 import Sizes from '@/class/three/utils/Sizes'
 import Mouse from '@/class/three/Mouse'
 import Time from '@/class/three/Time'
 import Resources from '@/class/three/utils/Resources'
+import Camera from '@/class/three/Camera'
 import Renderer from '@/class/three/Renderer'
 import World from '@/class/three/World/World'
 import Debug from '@/class/three/Debug'

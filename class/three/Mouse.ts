@@ -1,20 +1,11 @@
-import * as THREE from 'three'
+import WebGLSub from '@/class/three/WebGLSub'
 
-import WebGL from '@/class/three/WebGL'
-import Sizes from '@/class/three/utils/Sizes'
-
-class Mouse extends THREE.EventDispatcher {
-	webGL: WebGL
-
-	sizes: Sizes
+class Mouse extends WebGLSub {
 	x: number = 0
 	y: number = 0
 
 	constructor() {
 		super()
-
-		this.webGL = new WebGL()
-		this.sizes = this.webGL.sizes
 
 		this.setEvents()
 	}

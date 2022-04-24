@@ -1,30 +1,17 @@
 import * as THREE from 'three'
 
-import WebGL from '@/class/three/WebGL'
-import Resources from '@/class/three/utils/Resources'
-import Debug from '@/class/three/Debug'
+import WebGLSub from '@/class/three/WebGLSub'
 
-export default class Environment {
-	webGL: WebGL
-
-	scene: THREE.Scene
-	resources: Resources
-	debug: Debug
-
+class Environment extends WebGLSub {
 	debugFolder!: { [key: string]: any }
 	sunLight!: THREE.DirectionalLight
 	environmentMap: { [key: string]: any } = {}
 
 	constructor() {
-		this.webGL = new WebGL()
-		this.scene = this.webGL.scene
-		this.resources = this.webGL.resources
-		this.debug = this.webGL.debug
+		super()
 
 		// Debug
-		if (this.debug.active) {
-			this.debugFolder = this.debug.gui.addFolder('environment')
-		}
+		if (this.debug.active) this.debugFolder = this.debug.addFolder('environment')
 
 		this.setSunLight()
 		this.setEnvironmentMap()
@@ -78,3 +65,5 @@ export default class Environment {
 		}
 	}
 }
+
+export default Environment

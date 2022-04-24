@@ -1,31 +1,19 @@
 import * as THREE from 'three'
-import WebGL from '@/class/three/WebGL'
-import Resources from '@/class/three/utils/Resources'
-import Debug from '@/class/three/Debug'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
-class Fox {
-	webGL: WebGL
+import WebGLSub from '@/class/three/WebGLSub'
 
-	scene: THREE.Scene
-	resources: Resources
-	debug: Debug
-
+class Fox extends WebGLSub {
 	debugFolder: { [key: string]: any } | undefined
 	resource: GLTF
 	model!: THREE.Object3D
 	animation!: { [key: string]: any }
 
 	constructor() {
-		this.webGL = new WebGL()
-		this.scene = this.webGL.scene
-		this.resources = this.webGL.resources
-		this.debug = this.webGL.debug
+		super()
 
 		// Debug
-		if (this.debug.active) {
-			this.debugFolder = this.debug.gui.addFolder('fox')
-		}
+		if (this.debug.active) this.debugFolder = this.debug.gui.addFolder('fox')
 
 		// Resource
 		this.resource = this.resources.itemsLoaded['foxModel'] as GLTF
@@ -76,7 +64,15 @@ class Fox {
 
 		// Debug
 		if (this.debug.active) {
-			const debugObject = {
+			this.debugFolder!.add(this.debugParams().animations, 'playIdle')
+			this.debugFolder!.add(this.debugParams().animations, 'playWalking')
+			this.debugFolder!.add(this.debugParams().animations, 'playRunning')
+		}
+	}
+
+	debugParams() {
+		return {
+			animations: {
 				playIdle: () => {
 					this.animation.play('idle')
 				},
@@ -86,10 +82,7 @@ class Fox {
 				playRunning: () => {
 					this.animation.play('running')
 				},
-			}
-			this.debugFolder!.add(debugObject, 'playIdle')
-			this.debugFolder!.add(debugObject, 'playWalking')
-			this.debugFolder!.add(debugObject, 'playRunning')
+			},
 		}
 	}
 

@@ -1,25 +1,16 @@
-import WebGL from '@/class/three/WebGL'
-import Resources from '@/class/three/utils/Resources'
 import Floor from '@/class/three/World/Floor'
 import Fox from '@/class/three/World/Fox'
 import Environment from '@/class/three/World/Environment'
-import Time from '@/class/three/Time'
 
-class World {
-	webGL: WebGL
+import WebGLSub from '@/class/three/WebGLSub'
 
-	scene: THREE.Scene
-	resources: Resources
-	time: Time
+class World extends WebGLSub {
 	floor: Floor | null = null
 	fox: Fox | null = null
 	environment: Environment | null = null
 
 	constructor() {
-		this.webGL = new WebGL()
-		this.scene = this.webGL.scene
-		this.resources = this.webGL.resources
-		this.time = this.webGL.time
+		super()
 
 		// Wait for resources
 		this.resources.addEventListener('resourcesLoaded', () => this.onResourcesLoaded())

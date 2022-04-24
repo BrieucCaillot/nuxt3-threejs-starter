@@ -1,29 +1,14 @@
 import * as THREE from 'three'
 
-import WebGL from '@/class/three/WebGL'
-import Sizes from '@/class/three/utils/Sizes'
-import Camera from '@/class/three/Camera'
+import WebGLSub from './WebGLSub'
 
-class Renderer {
-	webGL: WebGL
-
+class Renderer extends WebGLSub {
 	instance: THREE.WebGLRenderer | null = null
 
-	canvas: HTMLCanvasElement
-	sizes: Sizes
-	scene: THREE.Scene
-	camera: Camera
-
 	constructor() {
-		this.webGL = new WebGL()
+		super()
 
 		this.instance
-
-		this.canvas = this.webGL.canvas
-		this.sizes = this.webGL.sizes
-		this.scene = this.webGL.scene
-		this.camera = this.webGL.camera
-
 		this.setInstance()
 	}
 
