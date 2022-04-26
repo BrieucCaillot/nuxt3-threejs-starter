@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-import WebGLSub from './WebGLSub'
+import WebGLSub from '@/class/three/WebGLSub'
 
 class Renderer extends WebGLSub {
 	instance: THREE.WebGLRenderer | null = null
