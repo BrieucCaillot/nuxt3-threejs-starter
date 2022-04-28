@@ -4,12 +4,6 @@
 	</div>
 </template>
 
-<script>
-export default defineComponent({
-	name: 'About',
-
-	setup() {
-		console.log('SETUP ABOUT')
-	},
-})
+<script setup lang="ts">
+console.log('SETUP ABOUT')
 </script>

@@ -5,20 +5,6 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-import WebGL from '@/class/three/WebGL'
-
-export default defineComponent({
-	name: 'Home',
-	setup() {
-		console.log('SETUP HOME')
-
-		onMounted(() => {
-			const { scene, camera } = new WebGL()
-			// camera.instance?.position.z = 5
-		})
-	},
-})
+<script setup lang="ts">
+console.log('SETUP HOME')
 </script>

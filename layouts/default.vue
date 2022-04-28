@@ -8,22 +8,11 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-
+<script setup lang="ts">
 import Header from '@/components/Header.vue'
 import Canvas from '@/components/three/Canvas.vue'
 
-export default defineComponent({
-	name: 'LayoutDefault',
-	components: {
-		Header,
-		Canvas,
-	},
-	setup() {
-		console.log('SETUP DEFAULT LAYOUT')
-	},
-})
+console.log('SETUP DEFAULT LAYOUT')
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,7 +4,9 @@
 			<Title>Nuxt3 ThreeJS Starter</Title>
 			<Meta name="description" content="Nuxt3 ThreeJS Starter" />
 		</Head>
-		<NuxtPage />
+		<NuxtLayout name="default">
+			<NuxtPage />
+		</NuxtLayout>
 	</div>
 </template>
 

@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 import glsl from 'vite-plugin-glsl'
 
 export default defineNuxtConfig({
