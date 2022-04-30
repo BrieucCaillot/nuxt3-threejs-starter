@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
+import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 
 class Fox extends WebGLSub {
@@ -13,10 +14,10 @@ class Fox extends WebGLSub {
 		super()
 
 		// Debug
-		if (this.debug.active) this.debugFolder = this.debug.gui.addFolder('fox')
+		if (WebGL.debug.active) this.debugFolder = WebGL.debug.gui.addFolder('fox')
 
 		// Resource
-		this.resource = this.resources.itemsLoaded['foxModel'] as GLTF
+		this.resource = WebGL.resources.itemsLoaded['foxModel'] as GLTF
 
 		this.setModel()
 		this.setAnimation()
@@ -25,7 +26,7 @@ class Fox extends WebGLSub {
 	setModel() {
 		this.model = this.resource.scene
 		this.model.scale.set(0.02, 0.02, 0.02)
-		this.scene.add(this.model)
+		WebGL.scene.add(this.model)
 
 		this.model.traverse((child) => {
 			if (child instanceof THREE.Mesh) {
@@ -63,7 +64,7 @@ class Fox extends WebGLSub {
 		}
 
 		// Debug
-		if (this.debug.active) {
+		if (WebGL.debug.active) {
 			this.debugFolder!.add(this.debugParams().animations, 'playIdle')
 			this.debugFolder!.add(this.debugParams().animations, 'playWalking')
 			this.debugFolder!.add(this.debugParams().animations, 'playRunning')

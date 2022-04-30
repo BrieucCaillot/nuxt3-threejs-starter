@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 
+import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 
 class Renderer extends WebGLSub {
@@ -14,7 +15,7 @@ class Renderer extends WebGLSub {
 
 	setInstance() {
 		this.instance = new THREE.WebGLRenderer({
-			canvas: this.canvas,
+			canvas: WebGL.canvas,
 			antialias: true,
 		})
 		this.instance.physicallyCorrectLights = true
@@ -24,17 +25,17 @@ class Renderer extends WebGLSub {
 		this.instance.shadowMap.enabled = true
 		this.instance.shadowMap.type = THREE.PCFSoftShadowMap
 		this.instance.setClearColor(0x222222, 1)
-		this.instance.setSize(this.sizes.width, this.sizes.height)
-		this.instance.setPixelRatio(this.sizes.pixelRatio)
+		this.instance.setSize(WebGL.sizes.width, WebGL.sizes.height)
+		this.instance.setPixelRatio(WebGL.sizes.pixelRatio)
 	}
 
 	onResize() {
-		this.instance!.setSize(this.sizes.width, this.sizes.height)
-		this.instance!.setPixelRatio(this.sizes.pixelRatio)
+		this.instance!.setSize(WebGL.sizes.width, WebGL.sizes.height)
+		this.instance!.setPixelRatio(WebGL.sizes.pixelRatio)
 	}
 
 	onUpdate() {
-		this.instance!.render(this.scene, this.camera.instance!)
+		this.instance!.render(WebGL.scene, WebGL.camera.instance!)
 	}
 
 	destroy() {

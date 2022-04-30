@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 
+import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 import vertexShader from '@/class/three/shaders/cube/vertex.glsl'
 import fragmentShader from '@/class/three/shaders/cube/fragment.glsl'
@@ -23,8 +24,8 @@ class Cube extends WebGLSub {
 		this.setMesh()
 
 		// Debug
-		if (this.debug.active) {
-			this.debugFolder = this.debug.gui.addFolder('cube')
+		if (WebGL.debug.active) {
+			this.debugFolder = WebGL.debug.gui.addFolder('cube')
 		}
 	}
 
@@ -41,8 +42,8 @@ class Cube extends WebGLSub {
 			},
 		})
 
-		if (this.debug.active) {
-			this.debug.gui.add(this.params, 'color', this.colors).onChange((value: string) => {
+		if (WebGL.debug.active) {
+			WebGL.debug.gui.add(this.params, 'color', this.colors).onChange((value: string) => {
 				this.material.uniforms.uColor.value.set(value)
 			})
 		}
@@ -53,7 +54,7 @@ class Cube extends WebGLSub {
 		this.mesh.rotation.x = -Math.PI * 0.5
 		this.mesh.receiveShadow = true
 		this.mesh.name = 'Cube'
-		this.scene.add(this.mesh)
+		WebGL.scene.add(this.mesh)
 	}
 
 	update() {
@@ -61,7 +62,7 @@ class Cube extends WebGLSub {
 	}
 
 	destroy() {
-		this.scene.remove(this.mesh)
+		WebGL.scene.remove(this.mesh)
 		this.geometry.dispose()
 		this.material.dispose()
 	}

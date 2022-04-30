@@ -10,26 +10,18 @@ import World from '@/class/three/World/World'
 import Debug from '@/class/three/Debug'
 
 class WebGL {
-	static instance: WebGL
+	canvas: HTMLCanvasElement
+	sizes: Sizes
+	mouse: Mouse
+	time: Time
+	scene: THREE.Scene
+	resources: Resources
+	camera: Camera
+	renderer: Renderer
+	world: World
+	debug: Debug
 
-	canvas!: HTMLCanvasElement
-	sizes!: Sizes
-	mouse!: Mouse
-	time!: Time
-	scene!: THREE.Scene
-	resources!: Resources
-	camera!: Camera
-	renderer!: Renderer
-	world!: World
-	debug!: Debug
-
-	constructor(_canvas?: HTMLCanvasElement) {
-		if (WebGL.instance) {
-			return WebGL.instance
-		} else if (!_canvas) return
-
-		WebGL.instance = this
-
+	setup(_canvas: HTMLCanvasElement) {
 		this.canvas = _canvas
 		this.sizes = new Sizes()
 		this.mouse = new Mouse()
@@ -41,12 +33,9 @@ class WebGL {
 		this.debug = new Debug()
 		this.world = new World()
 
-		// Bind all methods
-		this.bindAll()
-
 		// Listeners
-		this.sizes.addEventListener('resize', () => this.resize())
-		this.mouse.addEventListener('mousemove', () => this.mouseMove())
+		this.sizes.addEventListener('resize', this.resize)
+		this.mouse.addEventListener('mousemove', this.mouseMove)
 
 		// Update
 		this.time.addUpdate(this.update)
@@ -55,16 +44,16 @@ class WebGL {
 		// setTimeout(() => this.destroy(), 3000)
 	}
 
-	resize() {
+	resize = () => {
 		this.camera.onResize()
 		this.renderer.onResize()
 	}
 
-	mouseMove() {
+	mouseMove = () => {
 		// To do on mousemove
 	}
 
-	update() {
+	update = () => {
 		this.camera.onUpdate()
 		this.world.onUpdate()
 		this.renderer.onUpdate()
@@ -100,10 +89,6 @@ class WebGL {
 		// Remove update
 		this.time.removeUpdate(this.update)
 	}
-
-	bindAll() {
-		this.update = this.update.bind(this)
-	}
 }
 
-export default WebGL
+export default new WebGL()

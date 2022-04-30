@@ -1,8 +1,9 @@
+import WebGL from '@/class/three/WebGL'
+import WebGLSub from '@/class/three/WebGLSub'
+
 import Floor from '@/class/three/World/Floor'
 import Fox from '@/class/three/World/Fox'
 import Environment from '@/class/three/World/Environment'
-
-import WebGLSub from '@/class/three/WebGLSub'
 
 class World extends WebGLSub {
 	floor: Floor | null = null
@@ -13,18 +14,20 @@ class World extends WebGLSub {
 		super()
 
 		// Wait for resources
-		this.resources.addEventListener('resourcesLoaded', () => this.onResourcesLoaded())
+		WebGL.resources.addEventListener('resourcesLoaded', () => this.onResourcesLoaded())
 	}
 
 	onResourcesLoaded() {
 		console.log('Resources loaded')
+		this.resourcesLoaded = true
 		this.floor = new Floor()
 		this.fox = new Fox()
 		this.environment = new Environment()
 	}
 
 	onUpdate() {
-		const { deltaTime } = this.time
+		const { deltaTime } = WebGL.time
+		if (!this.resourcesLoaded) return
 		this.fox && this.fox.update(deltaTime)
 	}
 }

@@ -1,3 +1,4 @@
+import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 
 class Mouse extends WebGLSub {
@@ -17,8 +18,8 @@ class Mouse extends WebGLSub {
 
 	setEvents = () => {
 		window.addEventListener('mousemove', (e: MouseEvent) => {
-			this.x = e.clientX / this.sizes.width
-			this.y = e.clientY / this.sizes.height
+			this.x = e.clientX / WebGL.sizes.width
+			this.y = e.clientY / WebGL.sizes.height
 
 			this.dispatchEvent({
 				type: 'mousemove',
