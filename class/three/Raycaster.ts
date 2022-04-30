@@ -5,8 +5,8 @@ import WebGLSub from '@/class/three/WebGLSub'
 
 import { EntitiesLayer } from '@/constants/ENTITIES'
 
-class Raycast extends WebGLSub {
-	raycaster: THREE.Raycaster = new THREE.Raycaster()
+class Raycaster extends WebGLSub {
+	instance: THREE.Raycaster = new THREE.Raycaster()
 	pointer: THREE.Vector2 = new THREE.Vector2(-10, -10)
 
 	constructor() {
@@ -19,10 +19,10 @@ class Raycast extends WebGLSub {
 
 	onUpdate() {
 		if (!WebGL.mouse.isMoving) return
-		this.raycaster.setFromCamera(this.pointer, WebGL.camera.instance)
+		this.instance.setFromCamera(this.pointer, WebGL.camera.instance)
 
 		// calculate objects intersecting the picking ray
-		const intersects = this.raycaster.intersectObjects(WebGL.scene.children)
+		const intersects = this.instance.intersectObjects(WebGL.scene.children)
 
 		for (let i = 0; i < intersects.length; i++) {
 			// console.log(intersects[i].object.name)
@@ -34,8 +34,8 @@ class Raycast extends WebGLSub {
 	}
 
 	setLayers(layerId: EntitiesLayer) {
-		this.raycaster.layers.set(layerId)
+		this.instance.layers.set(layerId)
 	}
 }
 
-export default Raycast
+export default Raycaster

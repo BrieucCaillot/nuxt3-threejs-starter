@@ -18,7 +18,7 @@ class Layers extends WebGLSub {
 		// await new Promise<void>((resolve, reject) => {
 		layers.forEach((layerId: number) => {
 			WebGL.camera.enableLayers(layerId)
-			WebGL.raycast.setLayers(layerId)
+			WebGL.raycaster.setLayers(layerId)
 		})
 
 		// 	resolve()
