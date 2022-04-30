@@ -5,7 +5,7 @@ import Mouse from '@/class/three/Mouse'
 import Time from '@/class/three/Time'
 import Resources from '@/class/three/utils/Resources'
 import Camera from '@/class/three/Camera'
-import Raycast from '@/class/three/Raycast'
+// import Raycast from '@/class/three/Raycast'
 import Renderer from '@/class/three/Renderer'
 import World from '@/class/three/World/World'
 import Debug from '@/class/three/Debug'
@@ -19,7 +19,7 @@ class WebGL {
 	scene: THREE.Scene
 	resources: Resources
 	camera: Camera
-	raycast: Raycast
+	// raycast: Raycast
 	renderer: Renderer
 	world: World
 	debug: Debug
@@ -33,7 +33,7 @@ class WebGL {
 		this.scene = new THREE.Scene()
 		this.resources = new Resources()
 		this.camera = new Camera()
-		this.raycast = new Raycast()
+		// this.raycast = new Raycast()
 		this.renderer = new Renderer()
 		this.debug = new Debug()
 		this.world = new World()
@@ -57,13 +57,13 @@ class WebGL {
 
 	mouseMove = (e) => {
 		// To do on mousemove
-		this.raycast.onMouseMove()
+		// this.raycast.onMouseMove()
 	}
 
 	update = () => {
 		this.camera.onUpdate()
 		this.world.onUpdate()
-		this.raycast.onUpdate()
+		// this.raycast.onUpdate()
 		this.renderer.onUpdate()
 	}
 
