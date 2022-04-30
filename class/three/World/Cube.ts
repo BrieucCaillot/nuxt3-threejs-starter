@@ -5,6 +5,8 @@ import WebGLSub from '@/class/three/WebGLSub'
 import vertexShader from '@/class/three/shaders/cube/vertex.glsl'
 import fragmentShader from '@/class/three/shaders/cube/fragment.glsl'
 
+import { EntitiesLayer, EntitiesName } from '@/constants/ENTITIES'
+
 class Cube extends WebGLSub {
 	geometry!: THREE.BoxGeometry
 	material!: THREE.ShaderMaterial
@@ -22,6 +24,7 @@ class Cube extends WebGLSub {
 		this.setGeometry()
 		this.setMaterial()
 		this.setMesh()
+		// this.setLayer()
 
 		// Debug
 		if (WebGL.debug.active) {
@@ -53,12 +56,16 @@ class Cube extends WebGLSub {
 		this.mesh = new THREE.Mesh(this.geometry, this.material)
 		this.mesh.rotation.x = -Math.PI * 0.5
 		this.mesh.receiveShadow = true
-		this.mesh.name = 'Cube'
+		this.mesh.name = EntitiesName.CUBE
 		WebGL.scene.add(this.mesh)
 	}
 
-	update() {
-		this.mesh.rotation.z += 0.01
+	setLayer() {
+		this.mesh.layers.set(EntitiesLayer[EntitiesName.CUBE])
+	}
+
+	update(deltaTime: number) {
+		this.mesh.rotation.z += deltaTime * 0.001
 	}
 
 	destroy() {

@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import WebGL from '@/class/three/WebGL'
+
 const canvas: { value: HTMLCanvasElement | null } = ref(null)
 
 onMounted(() => {

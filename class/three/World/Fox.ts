@@ -4,6 +4,8 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 
+import { EntitiesName } from '@/constants/ENTITIES'
+
 class Fox extends WebGLSub {
 	debugFolder: { [key: string]: any } | undefined
 	resource: GLTF
@@ -26,11 +28,13 @@ class Fox extends WebGLSub {
 	setModel() {
 		this.model = this.resource.scene
 		this.model.scale.set(0.02, 0.02, 0.02)
+		this.model.name = EntitiesName.FOX
 		WebGL.scene.add(this.model)
 
 		this.model.traverse((child) => {
 			if (child instanceof THREE.Mesh) {
 				child.castShadow = true
+				// child.layers.set(EntitiesLayer[EntitiesName.FOX])
 			}
 		})
 	}

@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import WebGL from '@/class/three/WebGL'
 import WebGLSub from '@/class/three/WebGLSub'
 
+import { EntitiesName } from '@/constants/ENTITIES'
+
 class Floor extends WebGLSub {
 	geometry!: THREE.CircleGeometry
 	material!: THREE.MeshStandardMaterial
@@ -45,6 +47,7 @@ class Floor extends WebGLSub {
 	setMesh() {
 		this.mesh = new THREE.Mesh(this.geometry, this.material)
 		this.mesh.rotation.x = -Math.PI * 0.5
+		this.mesh.name = EntitiesName.FLOOR
 		this.mesh.receiveShadow = true
 		WebGL.scene.add(this.mesh)
 	}
