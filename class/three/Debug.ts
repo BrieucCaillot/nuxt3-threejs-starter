@@ -13,8 +13,7 @@ class Debug {
 
 	setGUI() {
 		this.gui = new GUI()
-		this.active = window.location.hash === '#debug'
-		this.gui.hide()
+		this.active = true
 		if (!this.active) return
 		this.gui.show()
 	}

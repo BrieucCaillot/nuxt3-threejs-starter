@@ -24,7 +24,7 @@ class Environment extends WebGLSub {
 		this.sunLight.shadow.camera.far = 15
 		this.sunLight.shadow.mapSize.set(1024, 1024)
 		this.sunLight.shadow.normalBias = 0.05
-		this.sunLight.position.set(3.5, 2, -1.25)
+		this.sunLight.position.set(3.5, 2, 1.4)
 		WebGL.scene.add(this.sunLight)
 
 		// Debug
@@ -37,7 +37,7 @@ class Environment extends WebGLSub {
 	}
 
 	setEnvironmentMap() {
-		this.environmentMap.intensity = 0.4
+		this.environmentMap.intensity = 3
 		this.environmentMap.texture = WebGL.resources.itemsLoaded['environmentMapTexture']
 		this.environmentMap.texture.encoding = THREE.sRGBEncoding
 
@@ -56,13 +56,7 @@ class Environment extends WebGLSub {
 
 		// Debug
 		if (WebGL.debug.active) {
-			this.debugFolder
-				.add(this.environmentMap, 'intensity')
-				.name('envMapIntensity')
-				.min(0)
-				.max(4)
-				.step(0.001)
-				.onChange(this.environmentMap.updateMaterials)
+			this.debugFolder.add(this.environmentMap, 'intensity').name('envMapIntensity').min(0).max(4).step(0.001).onChange(this.environmentMap.updateMaterials)
 		}
 	}
 }

@@ -27,9 +27,13 @@ class Raycaster extends WebGLSub {
 		for (let i = 0; i < intersects.length; i++) {
 			// console.log(intersects[i].object.name)
 			const object = intersects[i].object as THREE.Mesh
-			if (object.name == 'CUBE') {
-				object.material.uniforms.uColor.value = new THREE.Color(0xff0000)
+			if (object.name == 'PLANE') {
+				const material = object.material as THREE.ShaderMaterial
+				material.uniforms.uMouse.value = intersects[i].point
 			}
+			// if (object.name == 'CUBE') {
+			// object.material.uniforms.uColor.value = new THREE.Color(0xff0000)
+			// }
 		}
 	}
 

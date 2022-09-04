@@ -18,8 +18,9 @@ class Camera extends WebGLSub {
 	}
 
 	setInstance() {
-		this.instance = new THREE.PerspectiveCamera(35, WebGL.sizes.width / WebGL.sizes.height, 1, 1000)
-		this.instance.position.set(6, 4, 8)
+		this.instance = new THREE.PerspectiveCamera(90, WebGL.sizes.width / WebGL.sizes.height, 0.1, 1000)
+		this.instance.position.set(0, 0, 1)
+		this.instance.lookAt(0, 0, 0)
 		WebGL.scene.add(this.instance)
 	}
 
